@@ -32,19 +32,19 @@ describe("The bus travel widget", function () {
         // Create an instance of the TravelCostCalculator
         const calculator = BusTravelCost();
   
-        // Test case 1: Destination is 'khayelitsha' and travelTime is 'peak'
+        // Test1 - Destination is 'khayelitsha' and travelTime is 'peak'
         const cost1 = calculator.calculateCostPerTrip('khayelitsha', 'peak');
         assert.equal(cost1, 50);
   
-        // Test case 2: Destination is 'dunoon' and travelTime is 'off-peak'
+        // Test2: Destination is 'dunoon' and travelTime is 'off-peak'
         const cost2 = calculator.calculateCostPerTrip('dunoon', 'off-peak');
         assert.equal(cost2, 25);
   
-        // Test case 3: Destination is 'mitchells_plain' and travelTime is 'peak'
+        // Test3: Destination is 'mitchells_plain' and travelTime is 'peak'
         const cost3 = calculator.calculateCostPerTrip('mitchells_plain', 'peak');
         assert.equal(cost3, 37.5);
   
-        // Test case 4: Destination is not found (default case)
+        // Test4: Destination is not found (default case)
         const cost4 = calculator.calculateCostPerTrip('invalid_destination', 'off-peak');
         assert.equal(cost4, 0);
       });
