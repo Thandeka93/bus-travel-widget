@@ -38,6 +38,13 @@ function tripCost() {
     totalTripsSpan.innerHTML = totalTrips;
     returnTripsSpan.innerHTML = returnTrips || '';
     costPerReturnSpan.innerHTML = "R" + costPerReturn.toFixed(2);
+
+    // Clear the input values
+    pointsInput.value = '';
+    destinationSelect.value = '';
+    travelTimeSelect.value = '';
+    returnTripCheckbox.checked = false;
+
 }
 
 // Add event listener to the calculate button
