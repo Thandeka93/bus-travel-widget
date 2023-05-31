@@ -10,56 +10,35 @@ const totalTripsSpan = document.getElementById('total-trips');
 const returnTripsSpan = document.getElementById('return-trips');
 const costPerReturnSpan = document.getElementById('cost-per-return');
 
-// creating function that will calculate price and number of trips
+// Create an instance for a factory function
+const busTravelCost = BusTravelCost();
+
+// Creating function that will calculate price and number of trips
 function tripCost() {
-    var points = parseInt(pointsInput.value);
-    var destination = destinationSelect.value;
-    var travelTime = travelTimeSelect.value;
-    var returnTrip = returnTripCheckbox.checked;
+    const points = Number(pointsInput.value);
+    const destination = destinationSelect.value;
+    const travelTime = travelTimeSelect.value;
+    const returnTrip = returnTripCheckbox.checked;
 
-    var costPerTrip;
-    var totalTrips;
-    var returnTrips;
-    var costPerReturn;
-    var price;
+    // Using the factory function for error messages (points not entered and start location not selected)
+    busTravelCost.errorMessage(destination, points);
 
-    //conditional statements depending on the location, peak hours and off-peak hours
-    switch (destination) {
-        case 'khayelitsha':
-            costPerTrip = 40;
-            break;
-        case 'dunoon':
-            costPerTrip = 25;
-            break;
-        case 'mitchells_plain':
-            costPerTrip = 30;
-            break;
-        default:
-            costPerTrip = 0;
-    }
+    // Calculate the cost per trip using the factory function
+    const costPerTrip = busTravelCost.calculateCostPerTrip(destination, travelTime);
 
-    if (travelTime === 'peak') {
-        costPerTrip += costPerTrip * 0.25;
-    }
+    const totalTrips = busTravelCost.calculateTotalTrips(points, costPerTrip);
 
-    totalTrips = Math.floor(points / costPerTrip);
+    const returnTrips = busTravelCost.calculateReturnTrips(totalTrips, returnTrip);
 
-    if (returnTrip) {
-        returnTrips = Math.floor(totalTrips / 2);
-        costPerReturn = costPerTrip * 2;
-    }
+    const costPerReturn = busTravelCost.calculateCostPerReturn(costPerTrip);
 
-    if (travelTime === 'peak') {
-        price = costPerTrip;
-    } else {
-        price = costPerTrip * 0.75;
-    }
+    const price = busTravelCost.calculatePrice(costPerTrip, travelTime);
 
     costPerTripSpan.innerHTML = "R" + costPerTrip.toFixed(2);
     totalTripsSpan.innerHTML = totalTrips;
     returnTripsSpan.innerHTML = returnTrips || '';
-    costPerReturnSpan.innerHTML = "R" + costPerReturn.toFixed(2) ;
+    costPerReturnSpan.innerHTML = "R" + costPerReturn.toFixed(2);
 }
 
-//event lister for the calculate button 
+// Add event listener to the calculate button
 calculateButton.addEventListener('click', tripCost);
