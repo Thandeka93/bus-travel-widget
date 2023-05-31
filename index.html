@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus Travel Widget</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <div class="widget-box"> 
+        <h1>BUS TRAVEL WIDGET</h1>
+
+        <div class="widget">
+            <label for="points">Points:</label>
+            <input type="number" id="points" placeholder="Enter Points">
+        </div>
+
+        <div class="widget">
+            <label for="destination">Start Location:</label>
+            <select id="destination">
+                <option value="Select start location">Select start location</option>
+                <option value="khayelitsha">Khayelitsha</option>
+                <option value="dunoon">Dunoon</option>
+                <option value="mitchells_plain">Mitchells Plain</option>
+            </select>
+        </div>
+
+        <div class="widget">
+            <label for="travel-time">Peak Time: 07:00-08:00 & 16:00-17:00</label>
+        </div>
+
+        <div class="widget">
+            <label for="travel-time">Travel Time:</label>
+            <select id="travel-time">
+                <option value="peak">Peak</option>
+                <option value="off-peak">Off-Peak</option>
+            </select>
+        </div>
+
+        <div class="widget">
+            <label for="return-trip">Return Trip:</label>
+            <input type="checkbox" id="return-trip">
+        </div>
+
+        <div class="widget">
+            <button id="calculate">Calculate</button>
+        </div>
+
+        <div id="result">
+            <p>Number of single trips:<span id="total-trips"></span></p>
+            <p>Price per trip: <span id="cost-per-trip"></span></p>
+            <p>Number of return trips: <span id="return-trips"></span></p>
+            <p>Price per trip (return):<span id="cost-per-return"></span></p>
+            <!-- <p>Price for a trip based on travel time: <span id="price"></span></p> -->
+        </div>
+
+    <!-- </div> -->
+
+    <script src="bus-travel.dom.js"></script>
+
+</body>
+
+</html>

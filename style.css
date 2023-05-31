@@ -1,0 +1,16 @@
+body{
+    background-color: #72A0C1;
+}
+  .widget {
+    margin-bottom: 1.7em;
+  }
+ .widget-box{
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #89CFF0;
+    border: 1px solid #080808;
+    border-radius: 5px;
+ }
+
+ 
